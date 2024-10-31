@@ -17,7 +17,6 @@ public class EventCategory {
     String name;
 
     public EventCategory (@Size(min=3, message ="Name must be at least 3 characters long") String name) {
-        this.id = id;
         this.name = name;
     }
 
