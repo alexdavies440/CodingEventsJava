@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
-public class EventCategory {
+public class EventCategory extends AbstractEntity {
     @Id
     @GeneratedValue
     int id;
@@ -17,10 +17,12 @@ public class EventCategory {
     String name;
 
     public EventCategory (@Size(min=3, message ="Name must be at least 3 characters long") String name) {
-        this.name = name;
+        super(name);
     }
 
-    public EventCategory() {}
+    public EventCategory() {
+
+    }
 
     public int getId() {
         return id;
