@@ -1,9 +1,15 @@
 package org.launchcode.codingevents.models;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.Size;
 
+import java.util.Objects;
+
+//This annotation instead of Entity so that values get stored in Event and EventCategory tables instead of AbstractEntity
+@MappedSuperclass
 public abstract class AbstractEntity {
     @Id
     @GeneratedValue
@@ -13,6 +19,7 @@ public abstract class AbstractEntity {
     String name;
 
     public AbstractEntity (String name) {
+        this.id = id;
         this.name = name;
     }
 
@@ -34,5 +41,18 @@ public abstract class AbstractEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AbstractEntity entity = (AbstractEntity) o;
+        return id == entity.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
