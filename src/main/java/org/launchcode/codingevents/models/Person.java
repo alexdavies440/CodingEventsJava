@@ -14,24 +14,24 @@ public class Person {
     @GeneratedValue
     private int id;
 
-    @NotBlank
-    @Size(min = 3)
+    @NotBlank(message = "Name required")
+    @Size(min = 3, message = "Name must be at least 3 characters long")
     private String name;
 
-    @NotBlank
-    @Email
+    @NotBlank (message = "email required")
+    @Email (message = "Invalid email")
     private String email;
 
-    @NotBlank
-    @Size(min = 3)
+    @NotBlank (message = "Username required")
+    @Size(min = 3, message = "Username must be at least 3 characters long")
     private String userName;
 
-    @NotBlank
-    @Size(min = 8)
+    @NotBlank (message = "Password required")
+    @Size(min = 8, message = "Password must be at least 8 characters long")
     private String password;
 
-    @NotBlank
-    @Size(min = 8)
+    @NotBlank(message = "Please verify password")
+    @Size(min = 8, message = "Password must be at least 8 characters long")
     private String verify;
 
     public Person() {}
@@ -43,4 +43,49 @@ public class Person {
         this.password = password;
         this.verify = verify;
     }
+
+    public @NotBlank(message = "Name required") @Size(min = 3, message = "Name must be at least 3 characters long") String getName() {
+        return name;
+    }
+
+    public void setName(@NotBlank(message = "Name required") @Size(min = 3, message = "Name must be at least 3 characters long") String name) {
+        this.name = name;
+    }
+
+    public @NotBlank(message = "email required") @Email(message = "Invalid email") String getEmail() {
+        return email;
+    }
+
+    public void setEmail(@NotBlank(message = "email required") @Email(message = "Invalid email") String email) {
+        this.email = email;
+    }
+
+    public @NotBlank(message = "Username required") @Size(min = 3, message = "Username must be at least 3 characters long") String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(@NotBlank(message = "Username required") @Size(min = 3, message = "Username must be at least 3 characters long") String userName) {
+        this.userName = userName;
+    }
+
+    public @NotBlank(message = "Password required") @Size(min = 8, message = "Password must be at least 8 characters long") String getPassword() {
+        return password;
+    }
+
+    public void setPassword(@NotBlank(message = "Password required") @Size(min = 8, message = "Password must be at least 8 characters long") String password) {
+        this.password = password;
+    }
+
+    public @NotBlank(message = "Please verify password") @Size(min = 8, message = "Password must be at least 8 characters long") String getVerify() {
+        return verify;
+    }
+
+    public void setVerify(@NotBlank(message = "Please verify password") @Size(min = 8, message = "Password must be at least 8 characters long") String verify) {
+        this.verify = verify;
+    }
+
+    public int getId() {
+        return id;
+    }
+
 }
